@@ -1,0 +1,6 @@
+@NexkontrolAPI_HostAddress = http://localhost:5091
+
+GET {{NexkontrolAPI_HostAddress}}/Nexkontrol/
+Accept: application/json
+
+###
