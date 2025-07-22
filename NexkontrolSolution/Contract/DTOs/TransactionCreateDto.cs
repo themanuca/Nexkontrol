@@ -17,7 +17,7 @@ namespace Contract.DTOs
         public TransactionStatus Status { get; set; }
         public Guid AccountId { get; set; }
         public Guid CategoryId { get; set; }
-        public bool IsRecurring { get; set; }
+        public bool IsRecurring { get; set; }   
         public RecurrenceInterval? RecurrenceInterval { get; set; }
     }
 }

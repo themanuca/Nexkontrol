@@ -40,14 +40,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]!))
         };
     });
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: "MyAllowSpecificOrigins",
-//                      policy =>
-//                      {
-//                          policy.WithOrigins("http://example.com");
-//                      });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyAllowSpecificOrigins",
+                      builder => {
+                          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                          builder.WithOrigins("http://localhost:5173/")
+                          .AllowAnyHeader()
+                           .AllowAnyMethod()
+                          .AllowCredentials();
+                      });
+});
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
@@ -96,7 +99,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//app.UseCors("MyAllowSpecificOrigins");
+app.UseRouting();
+app.UseCors("MyAllowSpecificOrigins");
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NexkontrolAPI.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
+
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;

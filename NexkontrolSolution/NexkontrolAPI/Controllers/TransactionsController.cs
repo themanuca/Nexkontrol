@@ -19,7 +19,7 @@ namespace NexkontrolAPI.Controllers
             _service = service;
         }
         private Guid GetUserId()
-        {
+            {
             var sub = User.FindFirstValue("codeVerify")
                       ?? throw new UnauthorizedAccessException("Token JWT inválido ou não contém o claim 'sub'.");
 
