@@ -95,7 +95,8 @@ namespace Application.Services.Auth
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Email = user.Email,
-                Name = user.Name
+                Name = user.Name,
+                UserId = user.Id,
             };
         }
     }

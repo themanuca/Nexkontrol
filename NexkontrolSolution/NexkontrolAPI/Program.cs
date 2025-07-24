@@ -1,5 +1,7 @@
 ﻿using Application.Interfaces;
+using Application.Services.Account;
 using Application.Services.Auth;
+using Application.Services.Category;
 using Application.Services.Dash;
 using Application.Services.Transaction;
 using Infra.DBContext;
@@ -45,7 +47,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "MyAllowSpecificOrigins",
                       builder => {
                           builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                          builder.WithOrigins("http://localhost:5173/")
+                          builder.WithOrigins("http://localhost:5173/", "http://localhost:5091")
                           .AllowAnyHeader()
                            .AllowAnyMethod()
                           .AllowCredentials();
@@ -55,6 +57,8 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
