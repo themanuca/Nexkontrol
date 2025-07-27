@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.7" />
-    <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="8.13.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="7.1.2" />
   </ItemGroup>
 
   <ItemGroup>
