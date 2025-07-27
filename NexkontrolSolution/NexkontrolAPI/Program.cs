@@ -47,7 +47,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "MyAllowSpecificOrigins",
                       builder => {
                           builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                          builder.WithOrigins("http://localhost:5173/", "http://localhost:5091")
+                          builder.WithOrigins("http://localhost:5173/", "http://localhost:5091", "https://nexkontrol-front-fszs.vercel.app")
                           .AllowAnyHeader()
                            .AllowAnyMethod()
                           .AllowCredentials();
