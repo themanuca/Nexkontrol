@@ -8,6 +8,6 @@ namespace Contract.DTOs
 {
     public class CategoryCreate
     {
-        public string CategoryName = string.Empty;
+        public string CategoryName { get; set; } = string.Empty;
     }
 }
