@@ -102,6 +102,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate(); // Aplica as migrações pendentes
+    }
+    catch (Exception ex)
+    {
+        // Opcional: Logar o erro se a migração falhar (requer ILogger)
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Um erro ocorreu ao aplicar as migrações do banco de dados.");
+    }
+}
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("MyAllowSpecificOrigins");
