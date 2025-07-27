@@ -25,7 +25,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+     sqlServerOptionsAction: sqlOptions =>
+     {
+         sqlOptions.EnableRetryOnFailure(
+             maxRetryCount: 10,
+             maxRetryDelay: TimeSpan.FromSeconds(30),
+             errorNumbersToAdd: null); // Add specific error numbers to retry on if needed
+     }));
 
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
