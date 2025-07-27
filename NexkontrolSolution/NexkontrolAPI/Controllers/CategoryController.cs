@@ -41,10 +41,12 @@ namespace NexkontrolAPI.Controllers
         
         }
         [HttpPost]
-        public async Task<IActionResult> CreateCategory([FromBody] CategorySummaryDto categorySummaryDto)
+        public async Task<IActionResult> CreateCategory([FromBody] CategoryCreate categoryCreate)
         {
+            var categorySummaryDto = new CategorySummaryDto();
             var userId = GetUserId();
             categorySummaryDto.UserId = userId;
+            categorySummaryDto.CategoryName = categoryCreate.CategoryName;
             var id = await _categoryService.CreateCategory(categorySummaryDto);
             return Ok(id);
         }
