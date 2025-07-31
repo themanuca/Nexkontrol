@@ -36,9 +36,16 @@ namespace NexkontrolAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAccount([FromBody] AccountCreateDto accountCreateDto )
         {
+            var accountdto = new AccountDto 
+            { 
+                Name = accountCreateDto.Name,            
+                InitialBalance = accountCreateDto.InitialBalance,
+                Type = accountCreateDto.Type,
+            
+            };
             var userId = GetUserId();
-            accountCreateDto.UserId = userId;
-            var id = await _service.CreateAccount(accountCreateDto);
+            accountdto.UserId = userId;
+            var id = await _service.CreateAccount(accountdto);
             return Ok(id);
         }
     }

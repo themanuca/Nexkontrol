@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Contract.DTOs
 {
-    public class AccountCreateDto
+    public class AccountDto
     {
         public string Name { get; set; } // ex: "Nubank Crédito"
         public decimal InitialBalance { get; set; }
         public AccountType Type { get; set; } // Enum: CreditCard, Bank, Wallet, etc.
+
+        public Guid UserId { get; set; }
 
     }
 }

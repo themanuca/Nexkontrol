@@ -18,7 +18,7 @@ namespace Application.Services.Account
             _context = appDbContext;
         }
 
-        public async Task<Guid> CreateAccount(AccountCreateDto accountCreateDto)
+        public async Task<Guid> CreateAccount(AccountDto accountCreateDto)
         {
 
             var entity = new Domain.Models.Account

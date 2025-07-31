@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface IAccountService
     {
         Task<List<AccountReadDto>> GetAllbyId(Guid userid);
-        Task<Guid> CreateAccount(AccountCreateDto accountCreateDto);
+        Task<Guid> CreateAccount(AccountDto accountCreateDto);
     }
 }

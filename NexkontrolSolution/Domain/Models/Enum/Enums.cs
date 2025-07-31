@@ -17,7 +17,7 @@ namespace Domain.Models.Enum
         Bank,
         CreditCard,
         Cash,
-        DigitalWallet
+        Pix
     }
 
     public enum TransactionStatus
