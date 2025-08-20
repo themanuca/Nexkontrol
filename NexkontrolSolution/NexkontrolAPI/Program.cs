@@ -3,6 +3,7 @@ using Application.Services.Account;
 using Application.Services.Auth;
 using Application.Services.Category;
 using Application.Services.Dash;
+using Application.Services.IA;
 using Application.Services.Transaction;
 using Infra.DBContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -66,6 +67,9 @@ builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IAIService, AIService>();
+builder.Services.AddHttpClient<ExternalAIService>();
+builder.Services.AddScoped<IExternalAIService, ExternalAIService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
