@@ -165,12 +165,12 @@ namespace NexkontrolAPI.Controllers
         /// </summary>
         /// 
         [HttpPost("ask-ia")]
-        public async Task<ActionResult<string>> AskIA([FromBody] string pergunta)
+        public async Task<ActionResult<string>> AskIA([FromBody] SendMessageIADto pergunta)
         {
             try
             {
                 var userId = GetUserId();
-                var resposta = await _externalAIService.PerguntarIAAsync(pergunta, userId);
+                var resposta = await _externalAIService.PerguntarIAAsync(pergunta.Pergunta, userId);
                 return Ok(new { resposta });
             }
             catch (Exception ex)
