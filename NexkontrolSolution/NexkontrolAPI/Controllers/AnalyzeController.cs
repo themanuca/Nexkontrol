@@ -165,6 +165,7 @@ namespace NexkontrolAPI.Controllers
         /// </summary>
         /// 
         [HttpPost("ask-ia")]
+        [AllowAnonymous]
         public async Task<ActionResult<string>> AskIA([FromBody] SendMessageIADto pergunta)
         {
             try
