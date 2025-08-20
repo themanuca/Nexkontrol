@@ -68,8 +68,8 @@ builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAIService, AIService>();
-builder.Services.AddHttpClient<ExternalAIService>();
-builder.Services.AddScoped<IExternalAIService, ExternalAIService>();
+builder.Services.AddHttpClient<IExternalAIService,ExternalAIService>();
+//builder.Services.AddScoped<IExternalAIService, ExternalAIService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
